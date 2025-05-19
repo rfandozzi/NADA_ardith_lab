@@ -6,7 +6,7 @@ import re
 import io
 
 #ignore the name solar and replace, just copied this from some template code too lazy to change it
-solar_df = pd.read_csv('12125-02-9-IR_raw.csv.csv', encoding='ISO-8859-1', header=None)
+solar_df = pd.read_csv('12125-02-9-IR_raw.csv', encoding='ISO-8859-1', header=None)
 solar_df.head()
 # Keep only the relevant column
 data_lines = solar_df[0].dropna().astype(str).tolist()
