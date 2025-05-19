@@ -7,10 +7,9 @@ output_path = "12125-02-9-IR_raw.csv"
 with open(input_path, "r", encoding="latin-1") as infile:
     lines = infile.readlines()
 
-# Write each line to a single-column CSV
 with open(output_path, "w", newline="") as outfile:
     writer = csv.writer(outfile)
     for line in lines:
         writer.writerow([line.strip()])
 
-print(f"✅ Saved each .jdx line into {output_path}")
+
