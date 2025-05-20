@@ -1,5 +1,14 @@
-from jcamp import jcamp_read
+from jcamp import jcamp_readfile
 
-reading=jcamp_read('12125-02-9-IR.jdx')
+# path to your .jdx file
+file_path = "./12125-02-9-IR.jdx"
 
-print(reading)
+# load the data
+data = jcamp_readfile(file_path)
+
+# extract x and y
+x = data['x']
+y = data['y']
+
+print("x:", x)
+print("y:", y)
