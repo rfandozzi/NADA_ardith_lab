@@ -48,12 +48,24 @@ for root,dirs,files in os.walk(main_folder):
                 wavenumber.append(float(data[0]))
                 absorbance.append(float(data[1]))
 
+            wn_filtered = []
+            ab_filtered = []
+
+            for i in range(len(wavenumber)):
+                wn = wavenumber[i]
+                ab = absorbance[i]
+                if 4000 <= wn <= 8000: #only want from 4000 cm^-1 to 8000 cm^-1
+                    wn_filtered.append(wn)
+                    ab_filtered.append(ab)
+
+            filtered_data = [(x, y) for x, y in zip(wavenumber, absorbance) if 4000 <= x <= 8000]
             plt.figure()
-            plt.plot(wavenumber, absorbance)
+            plt.plot(wn_filtered, ab_filtered)
             plt.grid(True)
             plt.xlabel("Wavenumber")
             plt.ylabel("Absorbance")
             plt.title(file)
+            plt.gca().invert_xaxis() #flip so 8000 cm^-1 is on left
             plot_path = os.path.join(plot_output_folder, file + '.png')
             plt.savefig(plot_path)
             plt.close()
